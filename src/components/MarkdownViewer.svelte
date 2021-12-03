@@ -1,49 +1,73 @@
 <script>
-  import Icon from '@ui/Icon.svelte';
+  import { fly } from 'svelte/transition'
+  import Icon from '@ui/Icon.svelte'
 </script>
 
-<div class="markdownViewer">
-
+<div
+  class="markdownViewer"
+  transition:fly={{ delay: 400, duration: 500, x: 1000, opacity: 0 }}
+>
   <div class="content">
     <div class="backArea">
       <div class="back">
         <div class="back-icon">
-          <img src="https://via.placeholder.com/20"/>
-          <!--        <Icon name="back" />-->
+          <Icon name="back" />
         </div>
-        <div class="text">
-          Знакомство с архитектурой
-        </div>
+        <div class="text">Знакомство с архитектурой</div>
       </div>
-      <div style="flex: 1"></div>
+      <div style="flex: 1" />
     </div>
 
     <div class="captionsArea">
       <div class="block" style="flex: 3">
         <div class="caption">Тема</div>
-        <div class="content" style="font-size: 26px">Основы архитектуры проектов</div>
+        <div class="content" style="font-size: 26px">
+          Основы архитектуры проектов
+        </div>
       </div>
 
       <div class="block" style="flex: 1">
         <div class="caption">Время</div>
         <div class="content">≈ 15 минут</div>
       </div>
-
-      <div class="block" style="flex: 1">
-        <div class="caption">Награда</div>
-        <div class="content">42 капли</div>
-      </div>
     </div>
 
     <div class="material">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus, sem id volutpat semper, arcu elit porta nibh, sit amet posuere augue turpis quis eros. Morbi sit amet nisi ut nunc rutrum viverra ut ut ex. Vivamus placerat ac arcu non rhoncus. Maecenas hendrerit nisi at odio porta, ac aliquet orci condimentum. Ut fermentum volutpat tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas in egestas magna, id ullamcorper diam. <br><br>
-      Suspendisse potenti. Donec vehicula consequat blandit. Quisque leo leo, eleifend et dolor ac, gravida ornare ex. Quisque mollis diam id cursus rhoncus. Donec ornare sit amet erat ac rutrum. Maecenas id imperdiet lectus, vel fermentum nisl. Phasellus fringilla massa ipsum, fermentum sodales risus posuere ut. Nunc rhoncus augue scelerisque ante ornare hendrerit. Morbi congue lacinia nunc, sit amet vehicula sem placerat at.<br><br>
-      Proin interdum mi a lacinia mattis. Praesent tellus diam, aliquam vel ultricies a, tincidunt in diam. Suspendisse maximus nisl quis velit venenatis, sit amet laoreet lectus ullamcorper. Fusce a turpis non nibh varius blandit. Mauris eget vestibulum risus. Aliquam erat volutpat. Fusce risus lorem, hendrerit eu venenatis quis, sollicitudin in orci. Proin in varius ante. Proin a justo interdum, consectetur arcu ac, luctus enim. Sed nec hendrerit ipsum.<br><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus, sem id volutpat semper, arcu elit porta nibh, sit amet posuere augue turpis quis eros. Morbi sit amet nisi ut nunc rutrum viverra ut ut ex. Vivamus placerat ac arcu non rhoncus. Maecenas hendrerit nisi at odio porta, ac aliquet orci condimentum. Ut fermentum volutpat tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas in egestas magna, id ullamcorper diam. <br><br>
-      Suspendisse potenti. Donec vehicula consequat blandit. Quisque leo leo, eleifend et dolor ac, gravida ornare ex. Quisque mollis diam id cursus rhoncus. Donec ornare sit amet erat ac rutrum. Maecenas id imperdiet lectus, vel fermentum nisl. Phasellus fringilla massa ipsum, fermentum sodales risus posuere ut. Nunc rhoncus augue scelerisque ante ornare hendrerit. Morbi congue lacinia nunc, sit amet vehicula sem placerat at.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus,
+      sem id volutpat semper, arcu elit porta nibh, sit amet posuere augue
+      turpis quis eros. Morbi sit amet nisi ut nunc rutrum viverra ut ut ex.
+      Vivamus placerat ac arcu non rhoncus. Maecenas hendrerit nisi at odio
+      porta, ac aliquet orci condimentum. Ut fermentum volutpat tortor. Interdum
+      et malesuada fames ac ante ipsum primis in faucibus. Maecenas in egestas
+      magna, id ullamcorper diam. <br /><br />
+      Suspendisse potenti. Donec vehicula consequat blandit. Quisque leo leo, eleifend
+      et dolor ac, gravida ornare ex. Quisque mollis diam id cursus rhoncus. Donec
+      ornare sit amet erat ac rutrum. Maecenas id imperdiet lectus, vel fermentum
+      nisl. Phasellus fringilla massa ipsum, fermentum sodales risus posuere ut.
+      Nunc rhoncus augue scelerisque ante ornare hendrerit. Morbi congue lacinia
+      nunc, sit amet vehicula sem placerat at.<br /><br />
+      Proin interdum mi a lacinia mattis. Praesent tellus diam, aliquam vel ultricies
+      a, tincidunt in diam. Suspendisse maximus nisl quis velit venenatis, sit amet
+      laoreet lectus ullamcorper. Fusce a turpis non nibh varius blandit. Mauris
+      eget vestibulum risus. Aliquam erat volutpat. Fusce risus lorem, hendrerit
+      eu venenatis quis, sollicitudin in orci. Proin in varius ante. Proin a justo
+      interdum, consectetur arcu ac, luctus enim. Sed nec hendrerit ipsum.<br
+      /><br />
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus, sem
+      id volutpat semper, arcu elit porta nibh, sit amet posuere augue turpis quis
+      eros. Morbi sit amet nisi ut nunc rutrum viverra ut ut ex. Vivamus placerat
+      ac arcu non rhoncus. Maecenas hendrerit nisi at odio porta, ac aliquet orci
+      condimentum. Ut fermentum volutpat tortor. Interdum et malesuada fames ac ante
+      ipsum primis in faucibus. Maecenas in egestas magna, id ullamcorper diam.
+      <br /><br />
+      Suspendisse potenti. Donec vehicula consequat blandit. Quisque leo leo, eleifend
+      et dolor ac, gravida ornare ex. Quisque mollis diam id cursus rhoncus. Donec
+      ornare sit amet erat ac rutrum. Maecenas id imperdiet lectus, vel fermentum
+      nisl. Phasellus fringilla massa ipsum, fermentum sodales risus posuere ut.
+      Nunc rhoncus augue scelerisque ante ornare hendrerit. Morbi congue lacinia
+      nunc, sit amet vehicula sem placerat at.
     </div>
   </div>
-
 </div>
 
 <style lang="scss">
@@ -51,12 +75,17 @@
 
   .markdownViewer {
     font-family: 'Roboto', sans-serif;
-    max-width: 800px;
-    position: relative;
-    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    max-width: 500px;
+    padding: 30px;
     display: flex;
     align-items: center;
-    @include cloud(skewX(3deg) translateX(0px), skewX(3deg) translate(10px));
+    @include cloud(
+      skewX(0deg) translateX(0px),
+      skewX(0deg) translate(-10px, 10px)
+    );
   }
 
   .content {
@@ -102,12 +131,12 @@
 
   .block {
     & .caption {
-      font-size: 14px;
+      font-size: 12px;
       opacity: 0.66;
     }
 
     & .content {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 500;
       & .big {
         font-size: 26px;
@@ -116,7 +145,9 @@
   }
 
   .material {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.18em;
+    height: 510px;
+    overflow: hidden auto;
   }
 </style>
