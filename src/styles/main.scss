@@ -1,0 +1,70 @@
+@import 'normalize.scss/normalize';
+@import './fonts';
+@import './animation';
+
+// Variables
+:root {
+  --accent: #de031c;
+  --container-width: 1246px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'MuseoSansCyrl', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue',
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  color: var(--text-gray);
+  font-weight: 300;
+  font-size: 14px;
+  padding-bottom: 100px;
+  background-color: #f8f8f8;
+}
+
+b {
+  font-weight: 700;
+}
+
+.container {
+  margin: 0 auto;
+  width: calc(100% - 20px);
+  max-width: var(--container-width);
+  @media screen and (max-width: 620px) {
+    width: calc(100% - 50px);
+  }
+  @media screen and (max-width: 319px) {
+    width: calc(100% - 20px);
+  }
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
+  margin: 0;
+}
