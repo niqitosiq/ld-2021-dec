@@ -6,3 +6,5 @@ yarn-error.log
 /static/main.css
 gsap-bonus.tgz
 static/img
+
+.idea/
