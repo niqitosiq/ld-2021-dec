@@ -9,7 +9,8 @@
     "start": "node __sapper__/build"
   },
   "dependencies": {
-    "normalize.scss": "^0.1.0"
+    "normalize.scss": "^0.1.0",
+    "pixi.js": "^6.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

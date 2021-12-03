@@ -1,17 +1,17 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte'
 
-  export let type = 'button';
-  export let styling = '';
+  export let type = 'button'
+  export let styling = ''
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher()
 
   const emitEvent = (type, event) => {
-    dispatch(type, event);
-  };
+    dispatch(type, event)
+  }
 </script>
 
-<button {type} class={styling} on:click={event => emitEvent('click', event)}>
+<button {type} class={styling} on:click={(event) => emitEvent('click', event)}>
   <slot name="custom">
     <span>
       <slot />
@@ -35,8 +35,8 @@
     > :global(div) {
       display: block;
       position: relative;
-      z-index: 5;
-      color: var(--white);
+      z-index: 8;
+      color: #fff;
       font-weight: 700;
       transition: transform ease 0.3s;
       transform: translateY(-5px);
@@ -51,11 +51,11 @@
       height: 100%;
       left: 0;
       top: 0;
-      border-radius: 75px;
+      border-radius: 10px;
       transition: transform ease 0.3s;
-      transform: translateY(-5px);
-      z-index: 1;
-      background: var(--gradient);
+      transform: translateY(-5px) skewX(3deg);
+      z-index: 7;
+      background: #2684ff;
     }
     &:before {
       content: '';
@@ -64,17 +64,18 @@
       height: 100%;
       left: 0;
       top: 0;
-      border-radius: 75px;
+      border-radius: 10px;
       transition: transform ease 0.3s;
-      z-index: 1;
-      background: #b32c2c;
+      z-index: 6;
+      background: rgba(38, 132, 255, 0.4);
+      transform: translateY(0px) skewX(3deg);
     }
 
     &:hover {
       &:after,
       > :global(span),
       > :global(div) {
-        transform: translateY(0);
+        transform: translateY(0) skewX(3deg);
       }
     }
   }

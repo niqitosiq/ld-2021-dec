@@ -1,13 +1,6 @@
 <script>
-  // import { page } from '$app/stores'
-  // import Onboarding from '@icons/onboarding.svg';
-  // import Base from '@icons/database.svelte';
-  // import Star from '@icons/star.svelte';
-  // import User from '@icons/user.svelte';
-
-  // function isLinkActive(href, exact) {
-  //   return exact ? $page.path === href : $page.path.includes(href)
-  // }
+  import { stores } from '@sapper/app'
+  const { page } = stores()
 
   let menu = [
     {
@@ -25,29 +18,35 @@
   import Icon from '@ui/Icon.svelte'
 </script>
 
-<div class="layout">
-  <div class="side">
-    <div class="logo">
-      <img src="/logo.png" alt="" />
+{#if $page.path != '/login'}
+  <div class="layout">
+    <div class="side">
+      <div class="logo">
+        <img src="/logo.png" alt="" />
+      </div>
+
+      <ul class="side-menu">
+        {#each menu as link}
+          <li>
+            <a href={link.link} class:active={link.active}>
+              <div class="icon"><Icon name={link.icon} /></div>
+
+              <span>{link.name} </span>
+            </a>
+          </li>
+        {/each}
+      </ul>
+
+      <img class="plug" src="/plugs/side.png" alt="" />
     </div>
 
-    <ul class="side-menu">
-      {#each menu as link}
-        <li>
-          <a href={link.link} class:active={link.active}>
-            <div class="icon"><Icon name={link.icon} /></div>
-
-            <span>{link.name} </span>
-          </a>
-        </li>
-      {/each}
-    </ul>
+    <div class="wrapper">
+      <slot />
+    </div>
   </div>
-
-  <div class="wrapper">
-    <slot />
-  </div>
-</div>
+{:else}
+  <slot />
+{/if}
 
 <style lang="scss" global>
   @import '../styles/mixins';
@@ -64,10 +63,11 @@
     @include cloud(skewX(3deg) translateX(-20px), skewX(3deg) translateX(-0px));
     width: 310px;
     padding: 88px 30px;
+    flex-shrink: 0;
   }
 
   .logo {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
   }
 
   .side-menu {
@@ -118,5 +118,14 @@
         }
       }
     }
+  }
+
+  .plug {
+    width: 200px;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
   }
 </style>

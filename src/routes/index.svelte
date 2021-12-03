@@ -1,15 +1,5 @@
 <script>
-  // import { onMount } from 'svelte'
-
-  // let gameComponent
-
-  // onMount(async () => {
-  //   gameComponent = (await import('@components/oboarding/Map.svelte')).default
-  // })
+  import Map from '../components/Map.svelte'
 </script>
 
-<!-- {#if gameComponent}
-  <svelte:component this={gameComponent} />
-{/if} -->
-<style lang="scss" global>
-</style>
+<Map />
