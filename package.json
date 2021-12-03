@@ -9,7 +9,9 @@
     "start": "node __sapper__/build"
   },
   "dependencies": {
+    "animejs": "^3.2.1",
     "normalize.scss": "^0.1.0",
+    "pixi-dashed-line": "1.0.0",
     "pixi.js": "^6.2.0"
   },
   "devDependencies": {

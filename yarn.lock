@@ -1550,6 +1550,11 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+animejs@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/animejs/-/animejs-3.2.1.tgz#de9fe2e792f44a777a7fdf6ae160e26604b0cdda"
+  integrity sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==
+
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
@@ -4744,6 +4749,11 @@ pixelmatch@^4.0.2:
   integrity sha1-j0fc7FARtHe2fbA8JDvB8wheiFQ=
   dependencies:
     pngjs "^3.0.0"
+
+pixi-dashed-line@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pixi-dashed-line/-/pixi-dashed-line-1.0.0.tgz#e886d2ceaa7f7d94e7249fce0783e6031159b85f"
+  integrity sha512-H6vXc8nRcoyW1cPR4fwbhzfrM5YnLRfa9EZVG50+BY3R31b1S8R+z3g/LS1tdS8p94cNSSjZA7IjOK2WB5wVew==
 
 pixi.js@^6.2.0:
   version "6.2.0"

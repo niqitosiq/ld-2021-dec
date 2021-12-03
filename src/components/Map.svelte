@@ -1,5 +1,7 @@
 <script>
   import { onMount } from 'svelte'
+  import anime from 'animejs/lib/anime.es.js'
+
   let map
 
   onMount(() => {
@@ -14,28 +16,57 @@
     app.loader
       .add('water', '/map/background.png')
       .add('island', '/map/island.png')
+      .add('island2', '/map/island2.png')
+      .add('island3', '/map/island3.png')
       .load((loader, resources) => {
         const water = new PIXI.Sprite(resources.water.texture)
-        const island = new PIXI.Sprite(resources.island.texture)
+        const islands = [
+          new PIXI.Sprite(resources.island.texture),
+          new PIXI.Sprite(resources.island2.texture),
+          new PIXI.Sprite(resources.island3.texture),
+        ]
 
         water.x = -200
         water.y = -300
 
-        island.x = 300
-        island.y = 300
+        islands[0].x = 300
+        islands[0].y = 300
+        islands[1].x = 600
+        islands[1].y = 350
+        islands[2].x = 900
+        islands[2].y = 400
 
         app.stage.addChild(water)
-        app.stage.addChild(island)
+
+        islands.forEach((i) => {
+          i.interactive = true
+
+          i.hitArea = new PIXI.Circle(70, 70, 100)
+
+          app.stage.addChild(i)
+
+          let scale = { y: -10 }
+
+          i.click = function () {
+            console.log('hi')
+          }
+        })
+
+        let waterOffset = {
+          x: -200,
+          y: -300,
+        }
+
+        anime({
+          targets: waterOffset,
+          y: -303,
+          easing: 'linear',
+          loop: true,
+          direction: 'alternate',
+        })
 
         app.ticker.add(() => {
-          if (water.x > -200) {
-            water.x += 1
-            island.x += 1
-          }
-          if (water.y < -500) {
-            water.y -= 2
-            island.y -= 1
-          }
+          water.y = waterOffset.y
         })
       })
   })
