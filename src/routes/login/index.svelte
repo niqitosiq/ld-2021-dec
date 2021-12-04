@@ -1,17 +1,34 @@
 <script>
   import Button from '@ui/Button.svelte'
+  import axios from 'axios'
+
+  let login, password
+
+  async function doLogin () {
+    const response = await fetch('http://192.168.1.221:8001/api/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        email: login,
+        pass: password
+      })}
+    )
+    localStorage.setItem('jwt', (await response.json()).jwt)
+  }
 </script>
 
-<div class="auth">
+<form on:submit|preventDefault={doLogin} class="auth">
   <img src="/logo.png" alt="" />
 
   <div class="form">
-    <input type="text" placeholder="Логин" />
-    <input placeholder="Пароль" type="password" />
+    <input bind:value={login} type="text" placeholder="Логин" />
+    <input bind:value={password} placeholder="Пароль" type="password" />
   </div>
 
-  <Button>Войти</Button>
-</div>
+  <Button type="submit">Войти</Button>
+</form>
 
 <style lang="scss">
   @import '../../styles/mixins';
