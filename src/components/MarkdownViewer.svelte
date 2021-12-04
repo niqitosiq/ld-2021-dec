@@ -18,6 +18,7 @@
     current = nodes.find((n) => n.id === id)
     if (conv) {
       text = conv.makeHtml(current.description)
+      console.log(current.description)
     }
   }
 </script>

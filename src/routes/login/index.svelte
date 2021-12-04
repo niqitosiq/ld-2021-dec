@@ -44,9 +44,9 @@
   .auth {
     position: relative;
     @include cloud(skewX(3deg) translateX(0px), skewX(3deg) translate(10px));
-    max-width: 300px;
-    margin: 200px auto;
-    padding: 20px;
+    max-width: 350px;
+    margin: 100px auto;
+    padding: 60px;
     display: flex;
     justify-content: center;
     flex-direction: column;

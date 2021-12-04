@@ -62,12 +62,12 @@
     position: relative;
     @include cloud(skewX(3deg) translateX(-20px), skewX(3deg) translateX(-0px));
     width: 310px;
-    padding: 88px 30px;
+    padding: 30px;
     flex-shrink: 0;
   }
 
   .logo {
-    margin-bottom: 40px;
+    margin-bottom: 80px;
   }
 
   .side-menu {
@@ -122,6 +122,7 @@
 
   .plug {
     width: 200px;
+    margin-top: 40px;
   }
 
   .wrapper {
