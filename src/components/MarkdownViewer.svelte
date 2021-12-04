@@ -1,6 +1,25 @@
 <script>
+  import { onMount } from 'svelte'
   import { fly } from 'svelte/transition'
   import Icon from '@ui/Icon.svelte'
+  import showdown from 'showdown'
+
+  export let id
+  export let nodes
+
+  let current
+  let conv
+  let text
+  onMount(() => {
+    conv = new showdown.Converter()
+  })
+
+  $: {
+    current = nodes.find((n) => n.id === id)
+    if (conv) {
+      text = conv.makeHtml(current.description)
+    }
+  }
 </script>
 
 <div
@@ -22,7 +41,7 @@
       <div class="block" style="flex: 3">
         <div class="caption">Тема</div>
         <div class="content" style="font-size: 26px">
-          Основы архитектуры проектов
+          {current.title}
         </div>
       </div>
 
@@ -33,39 +52,11 @@
     </div>
 
     <div class="material">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus,
-      sem id volutpat semper, arcu elit porta nibh, sit amet posuere augue
-      turpis quis eros. Morbi sit amet nisi ut nunc rutrum viverra ut ut ex.
-      Vivamus placerat ac arcu non rhoncus. Maecenas hendrerit nisi at odio
-      porta, ac aliquet orci condimentum. Ut fermentum volutpat tortor. Interdum
-      et malesuada fames ac ante ipsum primis in faucibus. Maecenas in egestas
-      magna, id ullamcorper diam. <br /><br />
-      Suspendisse potenti. Donec vehicula consequat blandit. Quisque leo leo, eleifend
-      et dolor ac, gravida ornare ex. Quisque mollis diam id cursus rhoncus. Donec
-      ornare sit amet erat ac rutrum. Maecenas id imperdiet lectus, vel fermentum
-      nisl. Phasellus fringilla massa ipsum, fermentum sodales risus posuere ut.
-      Nunc rhoncus augue scelerisque ante ornare hendrerit. Morbi congue lacinia
-      nunc, sit amet vehicula sem placerat at.<br /><br />
-      Proin interdum mi a lacinia mattis. Praesent tellus diam, aliquam vel ultricies
-      a, tincidunt in diam. Suspendisse maximus nisl quis velit venenatis, sit amet
-      laoreet lectus ullamcorper. Fusce a turpis non nibh varius blandit. Mauris
-      eget vestibulum risus. Aliquam erat volutpat. Fusce risus lorem, hendrerit
-      eu venenatis quis, sollicitudin in orci. Proin in varius ante. Proin a justo
-      interdum, consectetur arcu ac, luctus enim. Sed nec hendrerit ipsum.<br
-      /><br />
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus, sem
-      id volutpat semper, arcu elit porta nibh, sit amet posuere augue turpis quis
-      eros. Morbi sit amet nisi ut nunc rutrum viverra ut ut ex. Vivamus placerat
-      ac arcu non rhoncus. Maecenas hendrerit nisi at odio porta, ac aliquet orci
-      condimentum. Ut fermentum volutpat tortor. Interdum et malesuada fames ac ante
-      ipsum primis in faucibus. Maecenas in egestas magna, id ullamcorper diam.
-      <br /><br />
-      Suspendisse potenti. Donec vehicula consequat blandit. Quisque leo leo, eleifend
-      et dolor ac, gravida ornare ex. Quisque mollis diam id cursus rhoncus. Donec
-      ornare sit amet erat ac rutrum. Maecenas id imperdiet lectus, vel fermentum
-      nisl. Phasellus fringilla massa ipsum, fermentum sodales risus posuere ut.
-      Nunc rhoncus augue scelerisque ante ornare hendrerit. Morbi congue lacinia
-      nunc, sit amet vehicula sem placerat at.
+      {#if text}
+        {@html text}
+      {:else}
+        {current.description}
+      {/if}
     </div>
   </div>
 </div>
@@ -78,7 +69,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    max-width: 500px;
+    width: 500px;
     padding: 30px;
     display: flex;
     align-items: center;
@@ -92,6 +83,7 @@
     display: flex;
     gap: 20px;
     flex-direction: column;
+    width: 100%;
   }
 
   .backArea {

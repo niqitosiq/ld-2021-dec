@@ -1,12 +1,4 @@
-let defpoints = [
-  { x: 0, y: 0, name: 'Начало графов', id: '1', target: ['1', '3'] },
-  { x: 300, y: 30, id: '2', name: 'Середина например', target: ['2', '4', '1'] },
-  { x: 150, y: 400, id: '4', name: 'Середина 2 например', target: ['2', '1'] },
-  { x: 200, y: -100, id: '3', name: 'Привет!', target: ['3', '2', '1'] },
-  { x: 400, y: 0, id: '5', name: 'Я никита', target: ['2', '1'] },
-];
-
-function getTargetGraphCoords(nodes, id) {
+function getLinkedGraphCoords(nodes, id) {
   const { x, y } = nodes.find((n) => n.id === id);
 
   return {
@@ -15,15 +7,15 @@ function getTargetGraphCoords(nodes, id) {
   };
 }
 
-export function getLinesStage(nodes = defpoints) {
+export function getLinesStage(nodes) {
   const lines = [];
 
   nodes.forEach((node) => {
-    const { target } = node;
+    const { linked = [] } = node;
     const line = new PIXI.Graphics();
 
-    target.forEach((t) => {
-      const { x, y } = getTargetGraphCoords(nodes, t);
+    linked.forEach((t) => {
+      const { x, y } = getLinkedGraphCoords(nodes, t);
       line.alpha = 0.2;
       line.lineStyle(1, 0xffffff);
       line.moveTo(node.x, node.y);
@@ -36,9 +28,9 @@ export function getLinesStage(nodes = defpoints) {
   return lines;
 }
 
-export function getGraphsStage(nodes = defpoints, pointClickEvent, activePoint) {
+export function getGraphsStage(nodes, pointClickEvent, activePoint) {
   nodes.forEach((node) => {
-    const { name, x, y } = node;
+    const { title, x, y } = node;
 
     node.gfx = new PIXI.Graphics();
     node.gfx.lineStyle(1, 0xffffff);
@@ -54,7 +46,7 @@ export function getGraphsStage(nodes = defpoints, pointClickEvent, activePoint) 
 
     node.gfx.hitArea = new PIXI.Circle(0, 0, 24);
 
-    const text = new PIXI.Text(name, {
+    const text = new PIXI.Text(title, {
       fontSize: 12,
       fill: '#FFFFFF',
     });

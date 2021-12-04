@@ -1,21 +1,29 @@
 <script>
   import Button from '@ui/Button.svelte'
-  import axios from 'axios'
+  import { goto } from '@sapper/app'
 
   let login, password
 
-  async function doLogin () {
+  async function doLogin() {
     const response = await fetch('http://192.168.1.221:8001/api/auth', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
         email: login,
-        pass: password
-      })}
-    )
-    localStorage.setItem('jwt', (await response.json()).jwt)
+        pass: password,
+      }),
+    })
+
+    const jwt = (await response.json()).jwt
+    console.log(jwt)
+
+    if (!jwt) return
+
+    localStorage.setItem('jwt', jwt)
+
+    goto('/')
   }
 </script>
 

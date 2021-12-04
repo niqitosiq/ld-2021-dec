@@ -6,7 +6,12 @@
 
   let map
   let mdVisible = false
-  let activePoint = { id: '1' }
+  let activePoint = { id: '' }
+  export let nodes
+
+  $: {
+    activePoint = { id: nodes[0].id }
+  }
 
   function openLearningPoint(node) {
     mdVisible = true
@@ -18,15 +23,15 @@
     activePoint.id = node.id
   }
   onMount(() => {
-    getMapApp(map, openLearningPoint, activePoint)
+    getMapApp(map, nodes, openLearningPoint, activePoint)
   })
 </script>
 
 <div class="map">
   <div bind:this={map} id="container" />
-  {mdVisible}
+
   {#if mdVisible}
-    <MarkdownViewer />
+    <MarkdownViewer {nodes} id={activePoint.id} />
   {/if}
 </div>
 
@@ -35,6 +40,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    margin-left: -30px;
   }
   #container {
     width: 100%;

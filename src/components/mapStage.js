@@ -1,13 +1,13 @@
 import anime from 'animejs/lib/anime.es.js';
 import { getGraphsStage, getLinesStage } from './graph';
 
-export const getMapApp = (map, openLearningPoint, activePoint) => {
-  const nodes = getGraphsStage(undefined, openLearningPoint, activePoint);
-  const lines = getLinesStage();
+export const getMapApp = (map, points, openLearningPoint, activePoint) => {
+  const nodes = getGraphsStage(points, openLearningPoint, activePoint);
+  const lines = getLinesStage(points);
 
   const app = new PIXI.Application({
     transparent: true,
-    width: map.offsetWidth,
+    width: map.offsetWidth + 30,
     height: map.offsetHeight,
     antialias: true,
     ANISOTROPIC_LEVEL: 16,
@@ -49,8 +49,8 @@ export const getMapApp = (map, openLearningPoint, activePoint) => {
       islands[0].y = 300;
       islands[0].scale.set(0.6, 0.6);
 
-      islands[1].x = 600;
-      islands[1].y = 350;
+      islands[1].y = 450;
+      islands[1].x = 650;
       islands[2].x = 900;
       islands[2].y = 400;
 
