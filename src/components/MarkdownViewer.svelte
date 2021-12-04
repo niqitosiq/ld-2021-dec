@@ -142,5 +142,10 @@
     line-height: 1.18em;
     height: 510px;
     overflow: hidden auto;
+
+    :global(a) {
+      color: #2684ff;
+      text-decoration: underline;
+    }
   }
 </style>
